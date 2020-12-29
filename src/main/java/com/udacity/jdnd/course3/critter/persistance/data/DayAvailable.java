@@ -3,6 +3,7 @@ package com.udacity.jdnd.course3.critter.persistance.data;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class DayAvailable {
@@ -11,6 +12,9 @@ public class DayAvailable {
     private Long id;
 
     private String day;
+
+    @ManyToOne
+    private Employee employee;
 
     public Long getId() {
         return id;

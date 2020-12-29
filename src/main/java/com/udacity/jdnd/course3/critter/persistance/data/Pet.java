@@ -2,10 +2,7 @@ package com.udacity.jdnd.course3.critter.persistance.data;
 
 import com.udacity.jdnd.course3.critter.pet.PetType;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class Pet {
@@ -16,7 +13,7 @@ public class Pet {
     private PetType type;
     private String name;
 
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Owner owner;
 
     public Long getId() {

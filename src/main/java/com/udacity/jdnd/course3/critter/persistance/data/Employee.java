@@ -1,15 +1,16 @@
 package com.udacity.jdnd.course3.critter.persistance.data;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import java.util.Set;
 
 @Entity
 public class Employee extends Person {
-    @OneToMany
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
     private Set<Skill> skills;
 
-    @OneToMany
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
     private Set<DayAvailable> daysAvailable;
 
     public Set<Skill> getSkills() {

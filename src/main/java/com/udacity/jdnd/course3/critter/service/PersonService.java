@@ -6,6 +6,7 @@ import com.udacity.jdnd.course3.critter.persistance.repository.EmployeeRepositor
 import com.udacity.jdnd.course3.critter.persistance.repository.OwnerRepository;
 import com.udacity.jdnd.course3.critter.pet.PetDTO;
 import com.udacity.jdnd.course3.critter.user.CustomerDTO;
+import com.udacity.jdnd.course3.critter.user.EmployeeDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -34,6 +35,10 @@ public class PersonService {
             customers.add(toCustomerDTO(owner));
         }
         return customers;
+    }
+
+    public EmployeeDTO saveEmployee(EmployeeDTO employeeDTO) {
+        return null;
     }
 
     private Owner toOwner(CustomerDTO dto) {

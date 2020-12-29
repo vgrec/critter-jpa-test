@@ -1,6 +1,7 @@
 package com.udacity.jdnd.course3.critter.persistance.data;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import java.util.List;
 
@@ -9,7 +10,7 @@ public class Owner extends Person {
     private String phoneNumber;
     private String notes;
 
-    @OneToMany
+    @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY)
     private List<Pet> pets;
 
     public String getPhoneNumber() {

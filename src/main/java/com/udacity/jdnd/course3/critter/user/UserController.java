@@ -38,7 +38,7 @@ public class UserController {
 
     @PostMapping("/employee")
     public EmployeeDTO saveEmployee(@RequestBody EmployeeDTO employeeDTO) {
-        throw new UnsupportedOperationException();
+        return personService.saveEmployee(employeeDTO);
     }
 
     @PostMapping("/employee/{employeeId}")
