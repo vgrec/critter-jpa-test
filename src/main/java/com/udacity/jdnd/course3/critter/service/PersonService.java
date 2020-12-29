@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PersonService {
@@ -51,13 +52,17 @@ public class PersonService {
         return dto;
     }
 
+    public EmployeeDTO getEmployee(long employeeId) throws Throwable {
+        Optional<Employee> optional = employeeRepository.findById(employeeId);
+        Employee employee = optional.orElseThrow(PersonNotFoundException::new);
+        return toEmployeeDTO(employee);
+    }
+
     private Employee toEmployee(EmployeeDTO dto) {
         Employee employee = new Employee();
         employee.setName(dto.getName());
         employee.setSkills(dto.getSkills());
-
-//        for (EmployeeSkill skill : dto.getSkills())
-//        employee.setSkills();
+        employee.setDaysAvailable(dto.getDaysAvailable());
 
         return employee;
 
@@ -86,5 +91,11 @@ public class PersonService {
         pet.setName(dto.getName());
         pet.setType(dto.getType());
         return pet;
+    }
+
+    class PersonNotFoundException extends Exception {
+        PersonNotFoundException() {
+            super("Person not found");
+        }
     }
 }

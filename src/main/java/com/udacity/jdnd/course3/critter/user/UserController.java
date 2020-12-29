@@ -42,8 +42,8 @@ public class UserController {
     }
 
     @PostMapping("/employee/{employeeId}")
-    public EmployeeDTO getEmployee(@PathVariable long employeeId) {
-        throw new UnsupportedOperationException();
+    public EmployeeDTO getEmployee(@PathVariable long employeeId) throws Throwable {
+        return personService.getEmployee(employeeId);
     }
 
     @PutMapping("/employee/{employeeId}")
