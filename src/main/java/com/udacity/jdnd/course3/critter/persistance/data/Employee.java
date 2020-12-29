@@ -1,31 +1,38 @@
 package com.udacity.jdnd.course3.critter.persistance.data;
 
+import com.udacity.jdnd.course3.critter.user.EmployeeSkill;
+
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import java.time.DayOfWeek;
 import java.util.Set;
 
 @Entity
 public class Employee extends Person {
-    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
-    private Set<Skill> skills;
+    @ElementCollection
+    @Enumerated(EnumType.STRING)
+    private Set<EmployeeSkill> skills;
 
-    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
-    private Set<DayAvailable> daysAvailable;
+    @ElementCollection
+    @Enumerated(EnumType.STRING)
+    private Set<DayOfWeek> daysAvailable;
 
-    public Set<Skill> getSkills() {
-        return skills;
-    }
-
-    public void setSkills(Set<Skill> skills) {
+    public void setSkills(Set<EmployeeSkill> skills) {
         this.skills = skills;
     }
 
-    public Set<DayAvailable> getDaysAvailable() {
+    public Set<EmployeeSkill> getSkills() {
+        return skills;
+    }
+
+    public void setDaysAvailable(Set<DayOfWeek> daysAvailable) {
+        this.daysAvailable = daysAvailable;
+    }
+
+    public Set<DayOfWeek> getDaysAvailable() {
         return daysAvailable;
     }
 
-    public void setDaysAvailable(Set<DayAvailable> daysAvailable) {
-        this.daysAvailable = daysAvailable;
-    }
 }

@@ -1,5 +1,6 @@
 package com.udacity.jdnd.course3.critter.service;
 
+import com.udacity.jdnd.course3.critter.persistance.data.Employee;
 import com.udacity.jdnd.course3.critter.persistance.data.Owner;
 import com.udacity.jdnd.course3.critter.persistance.data.Pet;
 import com.udacity.jdnd.course3.critter.persistance.repository.EmployeeRepository;
@@ -38,7 +39,28 @@ public class PersonService {
     }
 
     public EmployeeDTO saveEmployee(EmployeeDTO employeeDTO) {
-        return null;
+        Employee saved = employeeRepository.save(toEmployee(employeeDTO));
+        return toEmployeeDTO(saved);
+    }
+
+    private EmployeeDTO toEmployeeDTO(Employee saved) {
+        EmployeeDTO dto = new EmployeeDTO();
+        dto.setId(saved.getId());
+        dto.setName(saved.getName());
+        dto.setSkills(saved.getSkills());
+        return dto;
+    }
+
+    private Employee toEmployee(EmployeeDTO dto) {
+        Employee employee = new Employee();
+        employee.setName(dto.getName());
+        employee.setSkills(dto.getSkills());
+
+//        for (EmployeeSkill skill : dto.getSkills())
+//        employee.setSkills();
+
+        return employee;
+
     }
 
     private Owner toOwner(CustomerDTO dto) {
