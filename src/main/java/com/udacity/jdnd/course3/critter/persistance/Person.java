@@ -2,12 +2,13 @@ package com.udacity.jdnd.course3.critter.persistance;
 
 import javax.persistence.*;
 
-@Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@MappedSuperclass
 public class Person {
     @GeneratedValue
     @Id
+    @Column
     private long id;
 
+    @Column
     private String name;
 }
