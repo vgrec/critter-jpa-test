@@ -1,4 +1,4 @@
-package com.udacity.jdnd.course3.critter.persistance;
+package com.udacity.jdnd.course3.critter.persistance.data;
 
 import javax.persistence.*;
 
