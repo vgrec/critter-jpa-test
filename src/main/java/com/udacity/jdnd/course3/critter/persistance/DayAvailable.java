@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Day {
+public class DayAvailable {
     @GeneratedValue
     @Id
     private Long id;
