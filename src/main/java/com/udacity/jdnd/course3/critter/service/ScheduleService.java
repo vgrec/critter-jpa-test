@@ -4,6 +4,7 @@ import com.udacity.jdnd.course3.critter.persistance.data.Employee;
 import com.udacity.jdnd.course3.critter.persistance.data.Pet;
 import com.udacity.jdnd.course3.critter.persistance.data.Schedule;
 import com.udacity.jdnd.course3.critter.persistance.repository.EmployeeRepository;
+import com.udacity.jdnd.course3.critter.persistance.repository.OwnerRepository;
 import com.udacity.jdnd.course3.critter.persistance.repository.PetRepository;
 import com.udacity.jdnd.course3.critter.persistance.repository.ScheduleRepository;
 import com.udacity.jdnd.course3.critter.schedule.ScheduleDTO;
@@ -26,6 +27,9 @@ public class ScheduleService {
 
     @Autowired
     private PetRepository petRepository;
+
+    @Autowired
+    private OwnerRepository ownerRepository;
 
     public ScheduleDTO createSchedule(ScheduleDTO scheduleDTO) {
         Schedule schedule = scheduleRepository.save(toSchedule(scheduleDTO));
@@ -53,13 +57,16 @@ public class ScheduleService {
 
     public List<ScheduleDTO> getScheduleForEmployee(long employeeId) {
         List<Schedule> schedules = scheduleRepository.findScheduleByEmployeesId(employeeId);
-
         return schedules.stream().map(this::toScheduleDTO).collect(Collectors.toList());
     }
 
     public List<ScheduleDTO> getScheduleForPet(long petId) {
         List<Schedule> schedules = scheduleRepository.findScheduleByPetsId(petId);
+        return schedules.stream().map(this::toScheduleDTO).collect(Collectors.toList());
+    }
 
+    public List<ScheduleDTO> getScheduleForCustomer(long customerId) {
+        List<Schedule> schedules = scheduleRepository.findScheduleByOwnersId(customerId);
         return schedules.stream().map(this::toScheduleDTO).collect(Collectors.toList());
     }
 

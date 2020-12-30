@@ -13,4 +13,6 @@ public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
 
     List<Schedule> findScheduleByPetsId(Long id);
 
+    List<Schedule> findScheduleByOwnersId(Long id);
+
 }

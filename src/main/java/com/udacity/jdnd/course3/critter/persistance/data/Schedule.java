@@ -21,6 +21,9 @@ public class Schedule {
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Pet> pets;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Owner> owners;
+
     @ElementCollection
     @Enumerated(EnumType.STRING)
     private Set<EmployeeSkill> skills;
@@ -63,5 +66,13 @@ public class Schedule {
 
     public Set<EmployeeSkill> getSkills() {
         return skills;
+    }
+
+    public List<Owner> getOwners() {
+        return owners;
+    }
+
+    public void setOwners(List<Owner> owners) {
+        this.owners = owners;
     }
 }
