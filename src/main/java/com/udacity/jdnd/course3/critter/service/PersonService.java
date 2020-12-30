@@ -11,9 +11,11 @@ import com.udacity.jdnd.course3.critter.user.CustomerDTO;
 import com.udacity.jdnd.course3.critter.user.EmployeeDTO;
 import org.springframework.stereotype.Service;
 
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
@@ -60,6 +62,7 @@ public class PersonService {
         dto.setId(saved.getId());
         dto.setName(saved.getName());
         dto.setSkills(saved.getSkills());
+        dto.setDaysAvailable(saved.getDaysAvailable());
         return dto;
     }
 
@@ -79,8 +82,16 @@ public class PersonService {
         return toCustomerDTO(owner);
     }
 
+    public void setAvailability(Set<DayOfWeek> daysAvailable, long employeeId) throws Throwable {
+        Optional<Employee> optional = employeeRepository.findById(employeeId);
+        Employee employee = optional.orElseThrow((Supplier<Throwable>) () -> new ItemNotFoundException(employeeId));
+        employee.setDaysAvailable(daysAvailable);
+        employeeRepository.save(employee);
+    }
+
     private Employee toEmployee(EmployeeDTO dto) {
         Employee employee = new Employee();
+        employee.setId(dto.getId());
         employee.setName(dto.getName());
         employee.setSkills(dto.getSkills());
         employee.setDaysAvailable(dto.getDaysAvailable());

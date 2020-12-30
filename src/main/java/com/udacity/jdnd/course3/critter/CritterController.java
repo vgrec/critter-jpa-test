@@ -1,18 +1,18 @@
 package com.udacity.jdnd.course3.critter;
 
+import com.google.common.collect.Sets;
 import com.udacity.jdnd.course3.critter.persistance.data.Pet;
-import com.udacity.jdnd.course3.critter.persistance.repository.PetRepository;
 import com.udacity.jdnd.course3.critter.pet.PetDTO;
 import com.udacity.jdnd.course3.critter.pet.PetType;
 import com.udacity.jdnd.course3.critter.service.PersonService;
 import com.udacity.jdnd.course3.critter.service.PetService;
 import com.udacity.jdnd.course3.critter.user.CustomerDTO;
-import org.junit.jupiter.api.Assertions;
+import com.udacity.jdnd.course3.critter.user.EmployeeDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import java.time.DayOfWeek;
 
 /**
  * Dummy controller class to verify installation success. Do not use for
@@ -29,24 +29,21 @@ public class CritterController {
 
     @GetMapping("/test")
     public String test() throws Throwable {
-        CustomerDTO customerDTO = createCustomerDTO();
-        CustomerDTO newCustomer = personService.saveCustomer(customerDTO);
+        EmployeeDTO dto = new EmployeeDTO();
+        dto.setName("Grigorash");
 
-        PetDTO petDTO = createPetDTO();
-        petDTO.setOwnerId(newCustomer.getId());
-        PetDTO newPet = petService.savePet(petDTO);
+        personService.saveEmployee(dto);
 
-        //make sure pet contains customer id
-        PetDTO retrievedPet = petService.getPet(newPet.getId());
-        Assertions.assertEquals(retrievedPet.getId(), newPet.getId());
-        Assertions.assertEquals(retrievedPet.getOwnerId(), newCustomer.getId());
+        EmployeeDTO saved = personService.getEmployee(1);
+        System.out.println("Emp id: " + saved.getId());
+        System.out.println("Emp days: " + saved.getDaysAvailable());
 
-        //make sure you can retrieve pets by owner
-        List<PetDTO> pets = petService.getPetsByOwner(newCustomer.getId());
+        saved.setName("Updating...");
+        saved.setDaysAvailable(Sets.newHashSet(DayOfWeek.WEDNESDAY, DayOfWeek.TUESDAY));
+        EmployeeDTO updated = personService.saveEmployee(saved);
 
-        for (PetDTO dto : pets) {
-            System.out.println(dto.getName());
-        }
+        System.out.println("Upd id: " + updated.getId());
+        System.out.println("Upd days: " + updated.getDaysAvailable());
 
 
         return "Critter Starter installed successfully";
