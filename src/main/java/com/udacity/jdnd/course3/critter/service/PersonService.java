@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 @Service
@@ -66,6 +67,18 @@ public class PersonService {
         Optional<Employee> optional = employeeRepository.findById(employeeId);
         Employee employee = optional.orElseThrow(PersonNotFoundException::new);
         return toEmployeeDTO(employee);
+    }
+
+    public CustomerDTO getOwnerByPet(long petId) throws Throwable {
+        Optional<Pet> optional = petRepository.findById(petId);
+        Pet pet = optional.orElseThrow((Supplier<Throwable>) () -> new ItemNotFoundException(petId));
+
+        Optional<Owner> optionalOwner = ownerRepository.findById(pet.getCustomerId());
+        Owner owner = optionalOwner.orElseThrow((Supplier<Throwable>) () -> new ItemNotFoundException(pet.getCustomerId()));
+        owner.setPets(petRepository.findPetsByCustomerId(owner.getId()));
+
+
+        return toCustomerDTO(owner);
     }
 
     private Employee toEmployee(EmployeeDTO dto) {
