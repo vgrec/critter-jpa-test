@@ -1,18 +1,18 @@
 package com.udacity.jdnd.course3.critter;
 
-import com.google.common.collect.Sets;
-import com.udacity.jdnd.course3.critter.persistance.data.Employee;
-import com.udacity.jdnd.course3.critter.persistance.repository.EmployeeRepository;
-import com.udacity.jdnd.course3.critter.persistance.repository.OwnerRepository;
+import com.udacity.jdnd.course3.critter.persistance.data.Pet;
 import com.udacity.jdnd.course3.critter.persistance.repository.PetRepository;
-import com.udacity.jdnd.course3.critter.user.EmployeeDTO;
-import com.udacity.jdnd.course3.critter.user.EmployeeSkill;
+import com.udacity.jdnd.course3.critter.pet.PetDTO;
+import com.udacity.jdnd.course3.critter.pet.PetType;
+import com.udacity.jdnd.course3.critter.service.PersonService;
+import com.udacity.jdnd.course3.critter.service.PetService;
+import com.udacity.jdnd.course3.critter.user.CustomerDTO;
+import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.DayOfWeek;
-import java.util.Optional;
+import java.util.List;
 
 /**
  * Dummy controller class to verify installation success. Do not use for
@@ -25,46 +25,56 @@ public class CritterController {
     private PetRepository petRepository;
 
     @Autowired
-    private OwnerRepository ownerRepository;
+    private PersonService personService;
 
     @Autowired
-    private EmployeeRepository employeeRepository;
+    private PetService petService;
 
     @GetMapping("/test")
     public String test() throws Throwable {
-        EmployeeDTO dto = new EmployeeDTO();
-        dto.setName("Vanea Cociuliiskii");
-        dto.setSkills(Sets.newHashSet(EmployeeSkill.WALKING, EmployeeSkill.SHAVING));
-        dto.setDaysAvailable(Sets.newHashSet(DayOfWeek.WEDNESDAY, DayOfWeek.TUESDAY));
+        CustomerDTO customerDTO = createCustomerDTO();
+        CustomerDTO newCustomer = personService.saveCustomer(customerDTO);
 
-        employeeRepository.save(toEmployee(dto));
+        PetDTO petDTO = createPetDTO();
+        petDTO.setOwnerId(newCustomer.getId());
+        PetDTO newPet = petService.savePet(petDTO);
 
+        //make sure pet contains customer id
+        PetDTO retrievedPet = petService.getPet(newPet.getId());
+        Assertions.assertEquals(retrievedPet.getId(), newPet.getId());
+        Assertions.assertEquals(retrievedPet.getOwnerId(), newCustomer.getId());
 
-        Optional<Employee> o = employeeRepository.findById(1L);
-        if (o.isPresent()) {
-            Employee p = o.get();
-            System.out.println("id: " + p.getId());
-            System.out.println("name: " + p.getName());
-            System.out.println("skills: " + p.getSkills());
-            System.out.println("days: " + p.getDaysAvailable());
-        } else {
-            System.out.println("Could not get");
+        //make sure you can retrieve pets by owner
+        List<PetDTO> pets = petService.getPetsByOwner(newCustomer.getId());
+
+        for (PetDTO dto : pets) {
+            System.out.println(dto.getName());
         }
 
 
         return "Critter Starter installed successfully";
     }
 
-    private Employee toEmployee(EmployeeDTO dto) {
-        Employee employee = new Employee();
-        employee.setName(dto.getName());
-        employee.setSkills(dto.getSkills());
-        employee.setDaysAvailable(dto.getDaysAvailable());
+    private static CustomerDTO createCustomerDTO() {
+        CustomerDTO customerDTO = new CustomerDTO();
+        customerDTO.setName("TestEmployee");
+        customerDTO.setPhoneNumber("123-456-789");
+        return customerDTO;
+    }
 
-//        for (EmployeeSkill skill : dto.getSkills())
-//        employee.setSkills();
+    private static PetDTO createPetDTO() {
+        PetDTO petDTO = new PetDTO();
+        petDTO.setName("TestPet");
+        petDTO.setType(PetType.CAT);
+        return petDTO;
+    }
 
-        return employee;
 
+    private Pet toPet(PetDTO dto) {
+        Pet pet = new Pet();
+        pet.setType(dto.getType());
+        pet.setName(dto.getName());
+
+        return pet;
     }
 }

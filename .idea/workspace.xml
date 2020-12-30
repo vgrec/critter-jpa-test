@@ -2,10 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="232b6f14-257f-4eae-be4c-25e76d3e591b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/service/ItemNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/service/OwnerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/service/PetService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/service/PersonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/service/PersonService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/CritterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/CritterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/data/Owner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/data/Owner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/data/Pet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/data/Pet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/pet/PetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/pet/PetController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/user/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/udacity/jdnd/course3/critter/CritterFunctionalTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/udacity/jdnd/course3/critter/CritterFunctionalTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/udacity/jdnd/course3/critter/CritterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/udacity/jdnd/course3/critter/CritterController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/udacity/jdnd/course3/critter/pet/PetController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/udacity/jdnd/course3/critter/pet/PetController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/udacity/jdnd/course3/critter/CritterFunctionalTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/udacity/jdnd/course3/critter/CritterFunctionalTest.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -23,74 +32,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/udacity/jdnd/course3/critter/CritterFunctionalTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="552">
-              <caret line="58" column="60" selection-start-line="58" selection-start-column="60" selection-end-line="58" selection-end-column="60" />
+            <state relative-caret-position="309">
+              <caret line="84" column="68" selection-start-line="84" selection-start-column="68" selection-end-line="84" selection-end-column="68" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/data/Employee.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="682">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#682#683#0" expanded="true" />
-                <element signature="e#734#735#0" expanded="true" />
-                <element signature="e#787#788#0" expanded="true" />
-                <element signature="e#824#825#0" expanded="true" />
-                <element signature="e#920#921#0" expanded="true" />
-                <element signature="e#964#965#0" expanded="true" />
-                <element signature="e#1009#1010#0" expanded="true" />
-                <element signature="e#1042#1043#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/data/Owner.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="27" column="14" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/user/EmployeeDTO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="644">
-              <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
-              <folding>
-                <element signature="e#931#932#0" expanded="true" />
-                <element signature="e#981#982#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/data/Pet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/user/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="45" column="29" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="29" />
+            <state relative-caret-position="207">
+              <caret line="30" column="37" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
               <folding>
                 <element signature="e#928#929#0" expanded="true" />
                 <element signature="e#982#983#0" expanded="true" />
@@ -100,14 +52,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/service/PersonService.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/pet/PetController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="54" column="32" lean-forward="true" selection-start-line="54" selection-start-column="32" selection-end-line="54" selection-end-column="32" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#3343#3344#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="242">
+              <caret line="39" column="36" lean-forward="true" selection-start-line="39" selection-start-column="36" selection-end-line="39" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -115,23 +63,83 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/CritterController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="521">
-              <caret line="61" column="56" selection-start-line="61" selection-start-column="56" selection-end-line="61" selection-end-column="56" />
+            <state relative-caret-position="171">
+              <caret line="39" column="39" selection-start-line="37" selection-start-column="7" selection-end-line="39" selection-end-column="51" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/data/Schedule.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/repository/OwnerRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+            <state relative-caret-position="161">
+              <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1136#1137#0" expanded="true" />
-                <element signature="e#1172#1173#0" expanded="true" />
-                <element signature="e#1217#1218#0" expanded="true" />
-                <element signature="e#1246#1247#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/service/PetService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="58" selection-start-line="58" selection-end-line="58" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/service/OwnerService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#319#320#0" expanded="true" />
+                <element signature="e#373#374#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/service/PersonService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="207">
+              <caret line="33" column="14" lean-forward="true" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3294#3295#0" expanded="true" />
+                <element signature="e#3343#3344#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/repository/PetRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="11" column="94" selection-start-line="11" selection-start-column="94" selection-end-line="11" selection-end-column="94" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/data/Owner.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="177">
+              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -146,6 +154,11 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>LocalDateTime</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -163,7 +176,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/Person.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/Pet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/Skill.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/repository/PetRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/repository/PersonRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/repository/OwnerRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/repository/EmployeeRepository.java" />
@@ -171,22 +183,28 @@
         <option value="$PROJECT_DIR$/src/test/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/user/CustomerDTO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/repository/SkillsRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/data/Pet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/data/Skill.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/data/DayAvailable.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/data/Owner.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/CritterController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/data/Employee.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/data/Schedule.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/service/PersonService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/user/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/service/ItemNotFoundException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/data/Pet.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/udacity/jdnd/course3/critter/CritterFunctionalTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/service/OwnerService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/data/Owner.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/pet/PetController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/CritterController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/repository/PetRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/service/PetService.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="189" />
+    <option name="x" value="145" />
     <option name="y" value="3" />
-    <option name="width" value="1733" />
+    <option name="width" value="1777" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -317,8 +335,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -337,7 +355,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.CritterFunctionalTest.testCreateEmployee">
+  <component name="RunManager" selected="JUnit.CritterFunctionalTest.testAddPetsToCustomer">
     <configuration name="CritterApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.udacity.jdnd.course3.critter.CritterApplication" />
       <module name="critter" />
@@ -347,6 +365,22 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CritterFunctionalTest.testAddPetsToCustomer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="critter" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.udacity.jdnd.course3.critter.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.udacity.jdnd.course3.critter" />
+      <option name="MAIN_CLASS_NAME" value="com.udacity.jdnd.course3.critter.CritterFunctionalTest" />
+      <option name="METHOD_NAME" value="testAddPetsToCustomer" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -385,9 +419,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CritterFunctionalTest.testAddPetsToCustomer" />
+        <item itemvalue="Application.CritterApplication" />
         <item itemvalue="JUnit.CritterFunctionalTest.testCreateEmployee" />
         <item itemvalue="JUnit.CritterFunctionalTest.testCreateCustomer" />
-        <item itemvalue="Application.CritterApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -465,43 +500,52 @@
       <option name="project" value="LOCAL" />
       <updated>1609256487380</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Implement operations for creating an employee">
+      <created>1609256902650</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1609256902654</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CritterFunctionalTest_testCreateCustomer - 2020.12.29 at 14h 37m 20s.xml">
-      <configuration name="CritterFunctionalTest.testCreateCustomer" configurationId="JUnit" />
+    <history-entry file="CritterFunctionalTest_testAddPetsToCustomer - 2020.12.30 at 10h 23m 58s.xml">
+      <configuration name="CritterFunctionalTest.testAddPetsToCustomer" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CritterFunctionalTest_testCreateCustomer - 2020.12.29 at 14h 38m 24s.xml">
-      <configuration name="CritterFunctionalTest.testCreateCustomer" configurationId="JUnit" />
+    <history-entry file="CritterFunctionalTest_testAddPetsToCustomer - 2020.12.30 at 10h 31m 04s.xml">
+      <configuration name="CritterFunctionalTest.testAddPetsToCustomer" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CritterFunctionalTest_testCreateCustomer - 2020.12.29 at 14h 53m 07s.xml">
-      <configuration name="CritterFunctionalTest.testCreateCustomer" configurationId="JUnit" />
+    <history-entry file="CritterFunctionalTest_testAddPetsToCustomer - 2020.12.30 at 10h 31m 21s.xml">
+      <configuration name="CritterFunctionalTest.testAddPetsToCustomer" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CritterFunctionalTest_testCreateCustomer - 2020.12.29 at 14h 55m 41s.xml">
-      <configuration name="CritterFunctionalTest.testCreateCustomer" configurationId="JUnit" />
+    <history-entry file="CritterFunctionalTest_testAddPetsToCustomer - 2020.12.30 at 10h 33m 53s.xml">
+      <configuration name="CritterFunctionalTest.testAddPetsToCustomer" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CritterFunctionalTest_testCreateEmployee - 2020.12.29 at 15h 10m 10s.xml">
-      <configuration name="CritterFunctionalTest.testCreateEmployee" configurationId="JUnit" />
+    <history-entry file="CritterFunctionalTest_testAddPetsToCustomer - 2020.12.30 at 10h 41m 34s.xml">
+      <configuration name="CritterFunctionalTest.testAddPetsToCustomer" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CritterFunctionalTest_testCreateCustomer - 2020.12.29 at 16h 15m 53s.xml">
-      <configuration name="CritterFunctionalTest.testCreateCustomer" configurationId="JUnit" />
+    <history-entry file="CritterFunctionalTest_testAddPetsToCustomer - 2020.12.30 at 10h 42m 24s.xml">
+      <configuration name="CritterFunctionalTest.testAddPetsToCustomer" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CritterFunctionalTest_testCreateEmployee - 2020.12.29 at 16h 23m 42s.xml">
-      <configuration name="CritterFunctionalTest.testCreateEmployee" configurationId="JUnit" />
+    <history-entry file="CritterFunctionalTest_testAddPetsToCustomer - 2020.12.30 at 10h 53m 41s.xml">
+      <configuration name="CritterFunctionalTest.testAddPetsToCustomer" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CritterFunctionalTest_testCreateEmployee - 2020.12.29 at 16h 40m 33s.xml">
-      <configuration name="CritterFunctionalTest.testCreateEmployee" configurationId="JUnit" />
+    <history-entry file="CritterFunctionalTest_testAddPetsToCustomer - 2020.12.30 at 10h 54m 26s.xml">
+      <configuration name="CritterFunctionalTest.testAddPetsToCustomer" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CritterFunctionalTest_testCreateCustomer - 2020.12.29 at 16h 40m 53s.xml">
-      <configuration name="CritterFunctionalTest.testCreateCustomer" configurationId="JUnit" />
+    <history-entry file="CritterFunctionalTest_testAddPetsToCustomer - 2020.12.30 at 11h 00m 08s.xml">
+      <configuration name="CritterFunctionalTest.testAddPetsToCustomer" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CritterFunctionalTest_testAddPetsToCustomer - 2020.12.30 at 11h 00m 24s.xml">
+      <configuration name="CritterFunctionalTest.testAddPetsToCustomer" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="189" y="3" width="1733" height="1047" extended-state="0" />
-    <editor active="true" />
+    <frame x="145" y="3" width="1777" height="1047" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24447101" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2085032" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -510,12 +554,12 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.38074398" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3665208" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.40262583" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3249453" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.3249453" />
       <window_info anchor="bottom" id="GraphQL" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32827735" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
@@ -541,29 +585,31 @@
     <MESSAGE value="Handle customer creation from the controller" />
     <MESSAGE value="Adjust relationships in the entities" />
     <MESSAGE value="Remove Skills and DayAvailable entities" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove Skills and DayAvailable entities" />
+    <MESSAGE value="Implement operations for creating an employee" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement operations for creating an employee" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/service/OwnerService.java</url>
+          <line>27</line>
+          <properties />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/service/PetService.java</url>
+          <line>58</line>
+          <properties />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/resources/Udacity.postman_collection.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2829" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/pet/PetController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-          <folding>
-            <element signature="e#312#313#0" expanded="true" />
-            <element signature="e#369#370#0" expanded="true" />
-            <element signature="e#451#452#0" expanded="true" />
-            <element signature="e#508#509#0" expanded="true" />
-            <element signature="e#560#561#0" expanded="true" />
-            <element signature="e#617#618#0" expanded="true" />
-            <element signature="e#723#724#0" expanded="true" />
-            <element signature="e#780#781#0" expanded="true" />
-          </folding>
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/user/EmployeeRequestDTO.java">
@@ -608,13 +654,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/pet/PetDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="20" column="11" lean-forward="true" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/time/DayOfWeek.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="284">
@@ -640,16 +679,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="296">
           <caret line="285" column="35" selection-start-line="285" selection-start-column="35" selection-end-line="285" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/repository/PetRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -704,26 +733,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/repository/OwnerRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/repository/SkillsRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/repository/SkillsRepository.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/data/Person.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -731,46 +741,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/data/Skill.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/data/DayAvailable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/data/Pet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/data/Owner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="27" column="14" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/data/Skill.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/data/DayAvailable.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/jakarta/persistence/jakarta.persistence-api/2.2.3/jakarta.persistence-api-2.2.3.jar!/javax/persistence/ElementCollection.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
@@ -791,68 +763,171 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/data/Employee.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        <state relative-caret-position="161">
+          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#682#683#0" expanded="true" />
-            <element signature="e#734#735#0" expanded="true" />
-            <element signature="e#787#788#0" expanded="true" />
-            <element signature="e#824#825#0" expanded="true" />
-            <element signature="e#920#921#0" expanded="true" />
-            <element signature="e#964#965#0" expanded="true" />
-            <element signature="e#1009#1010#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/data/Schedule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/service/ItemNotFoundException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+          <folding>
+            <element signature="e#232#233#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/jakarta/persistence/jakarta.persistence-api/2.2.3/jakarta.persistence-api-2.2.3.jar!/javax/persistence/ManyToOne.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/jakarta/persistence/jakarta.persistence-api/2.2.3/jakarta.persistence-api-2.2.3.jar!/javax/persistence/OneToMany.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/pet/PetDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <element signature="e#736#737#0" expanded="true" />
+            <element signature="e#774#775#0" expanded="true" />
             <element signature="e#1042#1043#0" expanded="true" />
+            <element signature="e#1076#1077#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/data/Pet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#737#738#0" expanded="true" />
+            <element signature="e#765#766#0" expanded="true" />
+            <element signature="e#806#807#0" expanded="true" />
+            <element signature="e#840#841#0" expanded="true" />
+            <element signature="e#960#961#0" expanded="true" />
+            <element signature="e#979#980#0" expanded="true" />
+            <element signature="e#1030#1031#0" expanded="true" />
+            <element signature="e#1060#1061#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/pet/PetController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="39" column="36" lean-forward="true" selection-start-line="39" selection-start-column="36" selection-end-line="39" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/repository/OwnerRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/service/OwnerService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#319#320#0" expanded="true" />
+            <element signature="e#373#374#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/CritterController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="61" column="56" selection-start-line="61" selection-start-column="56" selection-end-line="61" selection-end-column="56" />
+        <state relative-caret-position="171">
+          <caret line="39" column="39" selection-start-line="37" selection-start-column="7" selection-end-line="39" selection-end-column="51" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/data/Schedule.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/repository/PetRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+        <state relative-caret-position="253">
+          <caret line="11" column="94" selection-start-line="11" selection-start-column="94" selection-end-line="11" selection-end-column="94" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1136#1137#0" expanded="true" />
-            <element signature="e#1172#1173#0" expanded="true" />
-            <element signature="e#1217#1218#0" expanded="true" />
-            <element signature="e#1246#1247#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/service/PetService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/udacity/jdnd/course3/critter/CritterFunctionalTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="58" column="60" selection-start-line="58" selection-start-column="60" selection-end-line="58" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/service/PersonService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="54" column="32" lean-forward="true" selection-start-line="54" selection-start-column="32" selection-end-line="54" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3343#3344#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="309">
+          <caret line="84" column="68" selection-start-line="84" selection-start-column="68" selection-end-line="84" selection-end-column="68" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/user/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="45" column="29" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="29" />
+        <state relative-caret-position="207">
+          <caret line="30" column="37" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
           <folding>
             <element signature="e#928#929#0" expanded="true" />
             <element signature="e#982#983#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/persistance/data/Owner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/udacity/jdnd/course3/critter/service/PersonService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="33" column="14" lean-forward="true" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3294#3295#0" expanded="true" />
+            <element signature="e#3343#3344#0" expanded="true" />
           </folding>
         </state>
       </provider>

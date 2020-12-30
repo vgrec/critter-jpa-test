@@ -17,9 +17,9 @@ import java.util.Set;
 @RestController
 @RequestMapping("/user")
 public class UserController {
+
     @Autowired
     private PersonService personService;
-
 
     @PostMapping("/customer")
     public CustomerDTO saveCustomer(@RequestBody CustomerDTO customerDTO) {
