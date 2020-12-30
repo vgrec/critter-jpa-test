@@ -39,7 +39,7 @@ public class PersonService {
         List<Owner> owners = ownerRepository.findAll();
 
         for (Owner owner : owners) {
-            List<Pet> ownersPets = petRepository.findPetsByCustomerId(owner.getId());
+            List<Pet> ownersPets = petRepository.findPetsByOwnerId(owner.getId());
             owner.setPets(ownersPets);
         }
 
@@ -73,9 +73,9 @@ public class PersonService {
         Optional<Pet> optional = petRepository.findById(petId);
         Pet pet = optional.orElseThrow((Supplier<Throwable>) () -> new ItemNotFoundException(petId));
 
-        Optional<Owner> optionalOwner = ownerRepository.findById(pet.getCustomerId());
-        Owner owner = optionalOwner.orElseThrow((Supplier<Throwable>) () -> new ItemNotFoundException(pet.getCustomerId()));
-        owner.setPets(petRepository.findPetsByCustomerId(owner.getId()));
+        Optional<Owner> optionalOwner = ownerRepository.findById(pet.getOwner().getId());
+        Owner owner = optionalOwner.orElseThrow((Supplier<Throwable>) () -> new ItemNotFoundException(pet.getOwner().getId()));
+        owner.setPets(petRepository.findPetsByOwnerId(owner.getId()));
 
 
         return toCustomerDTO(owner);
@@ -123,7 +123,6 @@ public class PersonService {
         dto.setId(pet.getId());
         dto.setName(pet.getName());
         dto.setType(pet.getType());
-        dto.setOwnerId(pet.getCustomerId());
 
         // TODO: add other fields
 

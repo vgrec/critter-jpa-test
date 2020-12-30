@@ -1,8 +1,11 @@
 package com.udacity.jdnd.course3.critter.service;
 
+import com.udacity.jdnd.course3.critter.persistance.data.Owner;
 import com.udacity.jdnd.course3.critter.persistance.data.Pet;
+import com.udacity.jdnd.course3.critter.persistance.repository.OwnerRepository;
 import com.udacity.jdnd.course3.critter.persistance.repository.PetRepository;
 import com.udacity.jdnd.course3.critter.pet.PetDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,15 +15,22 @@ import java.util.function.Supplier;
 
 @Service
 public class PetService {
+    @Autowired
     private PetRepository petRepository;
 
-    public PetService(PetRepository petRepository) {
-        this.petRepository = petRepository;
-    }
+    @Autowired
+    private OwnerRepository ownerRepository;
 
     public PetDTO savePet(PetDTO petDTO) {
-        Pet saved = petRepository.save(toPet(petDTO));
-        return toPetDTO(saved);
+        Pet savedPet = petRepository.save(toPet(petDTO));
+        Optional<Owner> optionalOwner = ownerRepository.findById(petDTO.getOwnerId());
+        if (optionalOwner.isPresent()) {
+            Owner owner = optionalOwner.get();
+            savedPet.setOwner(owner);
+            return toPetDTO(petRepository.save(savedPet));
+        } else {
+            return toPetDTO(savedPet);
+        }
     }
 
     public PetDTO getPet(long petId) throws Throwable {
@@ -33,7 +43,7 @@ public class PetService {
         Pet pet = new Pet();
         pet.setType(dto.getType());
         pet.setName(dto.getName());
-        pet.setCustomerId(dto.getOwnerId());
+//        pet.setCustomerId(dto.getOwnerId());
 
         return pet;
     }
@@ -43,7 +53,7 @@ public class PetService {
         dto.setId(pet.getId());
         dto.setName(pet.getName());
         dto.setType(pet.getType());
-        dto.setOwnerId(pet.getCustomerId());
+//        dto.setOwnerId(pet.getCustomerId());
 
         // TODO: add other fields
 
@@ -55,7 +65,7 @@ public class PetService {
     }
 
     public List<PetDTO> getPetsByOwner(long ownerId) {
-        List<Pet> pets = petRepository.findPetsByCustomerId(ownerId);
+        List<Pet> pets = petRepository.findPetsByOwnerId(ownerId);
         return toPetsDTOList(pets);
     }
 

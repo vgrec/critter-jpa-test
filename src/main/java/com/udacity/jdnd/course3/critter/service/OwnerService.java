@@ -42,7 +42,7 @@ public class OwnerService {
         dto.setId(pet.getId());
         dto.setName(pet.getName());
         dto.setType(pet.getType());
-        dto.setOwnerId(pet.getCustomerId());
+        dto.setOwnerId(pet.getOwner().getId());
 
         // TODO: add other fields
 

@@ -17,9 +17,6 @@ public class Pet {
     @ManyToOne(cascade = CascadeType.ALL)
     private Owner owner;
 
-    private Long customerId;
-
-
     public Long getId() {
         return id;
     }
@@ -50,13 +47,5 @@ public class Pet {
 
     public void setOwner(Owner owner) {
         this.owner = owner;
-    }
-
-    public void setCustomerId(long customerId) {
-        this.customerId = customerId;
-    }
-
-    public Long getCustomerId() {
-        return customerId;
     }
 }

@@ -22,9 +22,6 @@ import java.util.List;
 public class CritterController {
 
     @Autowired
-    private PetRepository petRepository;
-
-    @Autowired
     private PersonService personService;
 
     @Autowired

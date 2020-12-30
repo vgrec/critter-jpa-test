@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface PetRepository extends JpaRepository<Pet, Long> {
 
-    List<Pet> findPetsByCustomerId(Long ownerId); // TODO: customer id duplicates the owner id
+    List<Pet> findPetsByOwnerId(Long ownerId);
 
 }

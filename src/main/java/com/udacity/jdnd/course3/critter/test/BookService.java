@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @Transactional
 public class BookService {
@@ -25,6 +27,20 @@ public class BookService {
 
         savedBook.setAuthor(savedAuthor);
         bookRepository.save(savedBook);
+
+        // ---- get author of a book
+        Optional<Book> optional = bookRepository.findById(2L);
+        Book b = optional.orElse(null);
+        if (b != null) {
+            System.out.println("Book: " + b.getName());
+            System.out.println("Book author: " + b.getAuthor().getName());
+        } else {
+            System.out.println("Nothing found");
+        }
+
+    }
+
+    void test2(){
 
     }
 }
