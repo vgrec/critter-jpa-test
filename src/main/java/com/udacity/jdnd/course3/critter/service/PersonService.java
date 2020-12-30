@@ -65,7 +65,7 @@ public class PersonService {
 
     public EmployeeDTO getEmployee(long employeeId) throws Throwable {
         Optional<Employee> optional = employeeRepository.findById(employeeId);
-        Employee employee = optional.orElseThrow(PersonNotFoundException::new);
+        Employee employee = optional.orElseThrow((Supplier<Throwable>) () -> new ItemNotFoundException(employeeId));
         return toEmployeeDTO(employee);
     }
 
@@ -73,10 +73,8 @@ public class PersonService {
         Optional<Pet> optional = petRepository.findById(petId);
         Pet pet = optional.orElseThrow((Supplier<Throwable>) () -> new ItemNotFoundException(petId));
 
-        Optional<Owner> optionalOwner = ownerRepository.findById(pet.getOwner().getId());
-        Owner owner = optionalOwner.orElseThrow((Supplier<Throwable>) () -> new ItemNotFoundException(pet.getOwner().getId()));
+        Owner owner = pet.getOwner();
         owner.setPets(petRepository.findPetsByOwnerId(owner.getId()));
-
 
         return toCustomerDTO(owner);
     }
@@ -124,26 +122,10 @@ public class PersonService {
         dto.setName(pet.getName());
         dto.setType(pet.getType());
 
-        // TODO: add other fields
-
         if (pet.getOwner() != null) {
             dto.setOwnerId(pet.getOwner().getId());
         }
 
         return dto;
-    }
-
-
-    private Pet toPet(PetDTO dto) {
-        Pet pet = new Pet();
-        pet.setName(dto.getName());
-        pet.setType(dto.getType());
-        return pet;
-    }
-
-    class PersonNotFoundException extends Exception {
-        PersonNotFoundException() {
-            super("Person not found");
-        }
     }
 }

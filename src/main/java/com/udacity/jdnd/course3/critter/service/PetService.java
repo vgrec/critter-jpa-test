@@ -43,7 +43,6 @@ public class PetService {
         Pet pet = new Pet();
         pet.setType(dto.getType());
         pet.setName(dto.getName());
-//        pet.setCustomerId(dto.getOwnerId());
 
         return pet;
     }
@@ -53,9 +52,6 @@ public class PetService {
         dto.setId(pet.getId());
         dto.setName(pet.getName());
         dto.setType(pet.getType());
-//        dto.setOwnerId(pet.getCustomerId());
-
-        // TODO: add other fields
 
         if (pet.getOwner() != null) {
             dto.setOwnerId(pet.getOwner().getId());
