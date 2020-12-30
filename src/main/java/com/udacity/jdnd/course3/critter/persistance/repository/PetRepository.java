@@ -4,6 +4,11 @@ import com.udacity.jdnd.course3.critter.persistance.data.Pet;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface PetRepository extends JpaRepository<Pet, Long> {
+
+    List<Pet> findPetsByCustomerId(Long ownerId); // TODO: customer id duplicates the owner id
+
 }
