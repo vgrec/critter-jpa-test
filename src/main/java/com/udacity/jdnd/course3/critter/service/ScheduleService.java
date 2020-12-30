@@ -51,8 +51,14 @@ public class ScheduleService {
         return schedules.stream().map(this::toScheduleDTO).collect(Collectors.toList());
     }
 
-    public List<ScheduleDTO> getScheduleForEmployee(long employeeId) throws Throwable {
+    public List<ScheduleDTO> getScheduleForEmployee(long employeeId) {
         List<Schedule> schedules = scheduleRepository.findScheduleByEmployeesId(employeeId);
+
+        return schedules.stream().map(this::toScheduleDTO).collect(Collectors.toList());
+    }
+
+    public List<ScheduleDTO> getScheduleForPet(long petId) {
+        List<Schedule> schedules = scheduleRepository.findScheduleByPetsId(petId);
 
         return schedules.stream().map(this::toScheduleDTO).collect(Collectors.toList());
     }

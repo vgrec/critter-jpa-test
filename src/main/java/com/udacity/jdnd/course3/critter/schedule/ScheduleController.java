@@ -28,7 +28,7 @@ public class ScheduleController {
 
     @GetMapping("/pet/{petId}")
     public List<ScheduleDTO> getScheduleForPet(@PathVariable long petId) {
-        throw new UnsupportedOperationException();
+        return scheduleService.getScheduleForPet(petId);
     }
 
     @GetMapping("/employee/{employeeId}")
