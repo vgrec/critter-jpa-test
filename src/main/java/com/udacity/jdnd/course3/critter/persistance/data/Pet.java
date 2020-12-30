@@ -3,6 +3,7 @@ package com.udacity.jdnd.course3.critter.persistance.data;
 import com.udacity.jdnd.course3.critter.pet.PetType;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Pet {
@@ -17,8 +18,8 @@ public class Pet {
     @ManyToOne(cascade = CascadeType.ALL)
     private Owner owner;
 
-    @ManyToOne
-    private Schedule schedule;
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "pets")
+    private List<Schedule> schedules;
 
     public Long getId() {
         return id;
@@ -50,5 +51,13 @@ public class Pet {
 
     public void setOwner(Owner owner) {
         this.owner = owner;
+    }
+
+    public List<Schedule> getSchedules() {
+        return schedules;
+    }
+
+    public void setSchedules(List<Schedule> schedules) {
+        this.schedules = schedules;
     }
 }

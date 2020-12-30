@@ -8,6 +8,7 @@ import com.udacity.jdnd.course3.critter.pet.PetDTO;
 import com.udacity.jdnd.course3.critter.pet.PetType;
 import com.udacity.jdnd.course3.critter.service.PersonService;
 import com.udacity.jdnd.course3.critter.service.PetService;
+import com.udacity.jdnd.course3.critter.service.ScheduleService;
 import com.udacity.jdnd.course3.critter.user.CustomerDTO;
 import com.udacity.jdnd.course3.critter.user.EmployeeDTO;
 import com.udacity.jdnd.course3.critter.user.EmployeeSkill;
@@ -36,19 +37,23 @@ public class CritterController {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    @Autowired
+    private ScheduleService scheduleService;
+
     @GetMapping("/test")
     public String test() throws Throwable {
         EmployeeDTO mariana = new EmployeeDTO();
         mariana.setName("Mariana");
         mariana.setDaysAvailable(Sets.newHashSet(DayOfWeek.WEDNESDAY, DayOfWeek.TUESDAY));
         mariana.setSkills(Sets.newHashSet(EmployeeSkill.SHAVING, EmployeeSkill.PETTING));
-        personService.saveEmployee(mariana);
+        EmployeeDTO saved = personService.saveEmployee(mariana);
 
-        EmployeeDTO dto = new EmployeeDTO();
-        dto.setName("Grigorash");
-        dto.setDaysAvailable(Sets.newHashSet(DayOfWeek.WEDNESDAY, DayOfWeek.TUESDAY));
-        dto.setSkills(Sets.newHashSet(EmployeeSkill.WALKING, EmployeeSkill.PETTING));
-        personService.saveEmployee(dto);
+
+        PetDTO cat = new PetDTO();
+        cat.setType(PetType.CAT);
+        cat.setName("Samira");
+        cat.setOwnerId(mariana.getId());
+
 
         System.out.println("Found By skill...");
 

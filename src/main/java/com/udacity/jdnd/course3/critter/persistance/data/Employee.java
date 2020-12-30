@@ -17,7 +17,7 @@ public class Employee extends Person {
     @Enumerated(EnumType.STRING)
     private Set<DayOfWeek> daysAvailable;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "employees")
     private List<Schedule> schedules;
 
     public void setSkills(Set<EmployeeSkill> skills) {
