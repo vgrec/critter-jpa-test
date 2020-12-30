@@ -3,7 +3,7 @@ package com.udacity.jdnd.course3.critter.persistance.data;
 import com.udacity.jdnd.course3.critter.user.EmployeeSkill;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
@@ -13,7 +13,7 @@ public class Schedule {
     @Id
     private Long id;
 
-    private LocalDateTime date;
+    private LocalDate date;
 
     @OneToMany
     private List<Employee> employees;
@@ -33,11 +33,11 @@ public class Schedule {
         this.id = id;
     }
 
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
