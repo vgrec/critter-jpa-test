@@ -32,8 +32,8 @@ public class ScheduleController {
     }
 
     @GetMapping("/employee/{employeeId}")
-    public List<ScheduleDTO> getScheduleForEmployee(@PathVariable long employeeId) {
-        throw new UnsupportedOperationException();
+    public List<ScheduleDTO> getScheduleForEmployee(@PathVariable long employeeId) throws Throwable {
+        return scheduleService.getScheduleForEmployee(employeeId);
     }
 
     @GetMapping("/customer/{customerId}")

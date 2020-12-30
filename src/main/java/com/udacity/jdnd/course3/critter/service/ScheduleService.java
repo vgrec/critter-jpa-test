@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 @Service
@@ -49,6 +51,13 @@ public class ScheduleService {
     public List<ScheduleDTO> getAllSchedules() {
         List<Schedule> schedules = scheduleRepository.findAll();
         return schedules.stream().map(this::toScheduleDTO).collect(Collectors.toList());
+    }
+
+    public List<ScheduleDTO> getScheduleForEmployee(long employeeId) throws Throwable {
+        Optional<Employee> optional = employeeRepository.findById(employeeId);
+        Employee employee = optional.orElseThrow((Supplier<Throwable>) () -> new ItemNotFoundException(employeeId));
+
+        return employee.getSchedules().stream().map(this::toScheduleDTO).collect(Collectors.toList());
     }
 
     private ScheduleDTO toScheduleDTO(Schedule schedule) {

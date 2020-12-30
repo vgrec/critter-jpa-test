@@ -15,10 +15,10 @@ public class Schedule {
 
     private LocalDate date;
 
-    @OneToMany
+    @OneToMany(mappedBy = "schedules")
     private List<Employee> employees;
 
-    @OneToMany
+    @OneToMany(mappedBy = "schedule")
     private List<Pet> pets;
 
     @ElementCollection

@@ -17,6 +17,9 @@ public class Pet {
     @ManyToOne(cascade = CascadeType.ALL)
     private Owner owner;
 
+    @ManyToOne
+    private Schedule schedule;
+
     public Long getId() {
         return id;
     }
