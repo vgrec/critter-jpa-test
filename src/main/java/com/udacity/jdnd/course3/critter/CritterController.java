@@ -1,18 +1,24 @@
 package com.udacity.jdnd.course3.critter;
 
 import com.google.common.collect.Sets;
+import com.udacity.jdnd.course3.critter.persistance.data.Employee;
 import com.udacity.jdnd.course3.critter.persistance.data.Pet;
+import com.udacity.jdnd.course3.critter.persistance.repository.EmployeeRepository;
 import com.udacity.jdnd.course3.critter.pet.PetDTO;
 import com.udacity.jdnd.course3.critter.pet.PetType;
 import com.udacity.jdnd.course3.critter.service.PersonService;
 import com.udacity.jdnd.course3.critter.service.PetService;
 import com.udacity.jdnd.course3.critter.user.CustomerDTO;
 import com.udacity.jdnd.course3.critter.user.EmployeeDTO;
+import com.udacity.jdnd.course3.critter.user.EmployeeSkill;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.DayOfWeek;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Dummy controller class to verify installation success. Do not use for
@@ -27,23 +33,33 @@ public class CritterController {
     @Autowired
     private PetService petService;
 
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
     @GetMapping("/test")
     public String test() throws Throwable {
+        EmployeeDTO mariana = new EmployeeDTO();
+        mariana.setName("Mariana");
+        mariana.setDaysAvailable(Sets.newHashSet(DayOfWeek.WEDNESDAY, DayOfWeek.TUESDAY));
+        mariana.setSkills(Sets.newHashSet(EmployeeSkill.SHAVING, EmployeeSkill.PETTING));
+        personService.saveEmployee(mariana);
+
         EmployeeDTO dto = new EmployeeDTO();
         dto.setName("Grigorash");
-
+        dto.setDaysAvailable(Sets.newHashSet(DayOfWeek.WEDNESDAY, DayOfWeek.TUESDAY));
+        dto.setSkills(Sets.newHashSet(EmployeeSkill.WALKING, EmployeeSkill.PETTING));
         personService.saveEmployee(dto);
 
-        EmployeeDTO saved = personService.getEmployee(1);
-        System.out.println("Emp id: " + saved.getId());
-        System.out.println("Emp days: " + saved.getDaysAvailable());
+        System.out.println("Found By skill...");
 
-        saved.setName("Updating...");
-        saved.setDaysAvailable(Sets.newHashSet(DayOfWeek.WEDNESDAY, DayOfWeek.TUESDAY));
-        EmployeeDTO updated = personService.saveEmployee(saved);
-
-        System.out.println("Upd id: " + updated.getId());
-        System.out.println("Upd days: " + updated.getDaysAvailable());
+        HashSet<EmployeeSkill> skills = Sets.newHashSet(EmployeeSkill.SHAVING);
+        DayOfWeek dayOfWeek = DayOfWeek.TUESDAY;
+        List<Employee> results = employeeRepository.findEmployeesBySkillsInAndDaysAvailable(skills, dayOfWeek);
+        for (Employee e : results) {
+            System.out.println("Name: " + e.getName());
+            System.out.println("Skill: " + e.getSkills());
+            System.out.println("Days: " + e.getDaysAvailable());
+        }
 
 
         return "Critter Starter installed successfully";

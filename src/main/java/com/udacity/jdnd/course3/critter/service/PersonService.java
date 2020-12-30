@@ -9,6 +9,8 @@ import com.udacity.jdnd.course3.critter.persistance.repository.PetRepository;
 import com.udacity.jdnd.course3.critter.pet.PetDTO;
 import com.udacity.jdnd.course3.critter.user.CustomerDTO;
 import com.udacity.jdnd.course3.critter.user.EmployeeDTO;
+import com.udacity.jdnd.course3.critter.user.EmployeeRequestDTO;
+import com.udacity.jdnd.course3.critter.user.EmployeeSkill;
 import org.springframework.stereotype.Service;
 
 import java.time.DayOfWeek;
@@ -138,5 +140,21 @@ public class PersonService {
         }
 
         return dto;
+    }
+
+    public List<EmployeeDTO> findEmployeesForService(EmployeeRequestDTO employeeRequestDTO) {
+        Set<EmployeeSkill> skills = employeeRequestDTO.getSkills();
+        DayOfWeek dayOfWeek = employeeRequestDTO.getDate().getDayOfWeek();
+
+        List<Employee> employees = employeeRepository.findEmployeesBySkillsInAndDaysAvailable(skills, dayOfWeek);
+
+        List<EmployeeDTO> resultList = new ArrayList<>();
+        for (Employee employee : employees) {
+            if (employee.getSkills().containsAll(skills)) {
+                resultList.add(toEmployeeDTO(employee));
+            }
+        }
+
+        return resultList;
     }
 }

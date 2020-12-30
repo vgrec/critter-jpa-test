@@ -164,9 +164,17 @@ public class CritterFunctionalTest {
         er2.setDate(LocalDate.of(2019, 12, 27)); //friday
         er2.setSkills(Sets.newHashSet(EmployeeSkill.WALKING, EmployeeSkill.SHAVING));
 
-        Set<Long> eIds2 = userController.findEmployeesForService(er2).stream().map(EmployeeDTO::getId).collect(Collectors.toSet());
+        List<EmployeeDTO> employees = userController.findEmployeesForService(er2);
+        for (EmployeeDTO e : employees) {
+            System.out.println();
+            System.out.println(e.getId() + ": " + e.getName());
+            System.out.println(e.getDaysAvailable());
+            System.out.println(e.getSkills());
+        }
+
+        Set<Long> eIds2 = employees.stream().map(EmployeeDTO::getId).collect(Collectors.toSet());
         Set<Long> eIds2expected = Sets.newHashSet(emp3n.getId());
-        Assertions.assertEquals(eIds2, eIds2expected);
+        Assertions.assertEquals(eIds2expected, eIds2);
     }
 
     @Test
