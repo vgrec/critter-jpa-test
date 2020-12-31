@@ -1,7 +1,7 @@
 package com.udacity.jdnd.course3.critter.service;
 
+import com.udacity.jdnd.course3.critter.persistance.data.Customer;
 import com.udacity.jdnd.course3.critter.persistance.data.Employee;
-import com.udacity.jdnd.course3.critter.persistance.data.Owner;
 import com.udacity.jdnd.course3.critter.persistance.data.Pet;
 import com.udacity.jdnd.course3.critter.persistance.repository.EmployeeRepository;
 import com.udacity.jdnd.course3.critter.persistance.repository.OwnerRepository;
@@ -36,22 +36,22 @@ public class PersonService {
     }
 
     public CustomerDTO saveCustomer(CustomerDTO customerDTO) {
-        Owner owner = toOwner(customerDTO);
-        Owner saved = ownerRepository.save(owner);
+        Customer customer = toOwner(customerDTO);
+        Customer saved = ownerRepository.save(customer);
         return toCustomerDTO(saved);
     }
 
     public List<CustomerDTO> getAllCustomers() {
-        List<Owner> owners = ownerRepository.findAll();
+        List<Customer> owners = ownerRepository.findAll();
 
-        for (Owner owner : owners) {
-            List<Pet> ownersPets = petRepository.findPetsByOwnerId(owner.getId());
-            owner.setPets(ownersPets);
+        for (Customer customer : owners) {
+            List<Pet> ownersPets = petRepository.findPetsByCustomerId(customer.getId());
+            customer.setPets(ownersPets);
         }
 
         List<CustomerDTO> customers = new ArrayList<>();
-        for (Owner owner : owners) {
-            customers.add(toCustomerDTO(owner));
+        for (Customer customer : owners) {
+            customers.add(toCustomerDTO(customer));
         }
         return customers;
     }
@@ -80,10 +80,10 @@ public class PersonService {
         Optional<Pet> optional = petRepository.findById(petId);
         Pet pet = optional.orElseThrow((Supplier<Throwable>) () -> new ItemNotFoundException(petId));
 
-        Owner owner = pet.getOwner();
-        owner.setPets(petRepository.findPetsByOwnerId(owner.getId()));
+        Customer customer = pet.getCustomer();
+        customer.setPets(petRepository.findPetsByCustomerId(customer.getId()));
 
-        return toCustomerDTO(owner);
+        return toCustomerDTO(customer);
     }
 
     public void setAvailability(Set<DayOfWeek> daysAvailable, long employeeId) throws Throwable {
@@ -104,24 +104,24 @@ public class PersonService {
 
     }
 
-    private Owner toOwner(CustomerDTO dto) {
-        Owner owner = new Owner();
-        owner.setName(dto.getName());
-        owner.setPhoneNumber(dto.getPhoneNumber());
-        owner.setNotes(dto.getNotes());
-        return owner;
+    private Customer toOwner(CustomerDTO dto) {
+        Customer customer = new Customer();
+        customer.setName(dto.getName());
+        customer.setPhoneNumber(dto.getPhoneNumber());
+        customer.setNotes(dto.getNotes());
+        return customer;
     }
 
-    private CustomerDTO toCustomerDTO(Owner owner) {
+    private CustomerDTO toCustomerDTO(Customer customer) {
         CustomerDTO dto = new CustomerDTO();
-        dto.setId(owner.getId());
-        dto.setName(owner.getName());
-        dto.setPhoneNumber(owner.getPhoneNumber());
-        dto.setNotes(owner.getNotes());
+        dto.setId(customer.getId());
+        dto.setName(customer.getName());
+        dto.setPhoneNumber(customer.getPhoneNumber());
+        dto.setNotes(customer.getNotes());
 
-        if (owner.getPets() != null) {
+        if (customer.getPets() != null) {
             List<PetDTO> ownerPets = new ArrayList<>();
-            for (Pet pet : owner.getPets()) {
+            for (Pet pet : customer.getPets()) {
                 ownerPets.add(toPetDTO(pet));
             }
             List<Long> petIds = ownerPets.stream().map(PetDTO::getId).collect(Collectors.toList());
@@ -137,8 +137,8 @@ public class PersonService {
         dto.setName(pet.getName());
         dto.setType(pet.getType());
 
-        if (pet.getOwner() != null) {
-            dto.setOwnerId(pet.getOwner().getId());
+        if (pet.getCustomer() != null) {
+            dto.setOwnerId(pet.getCustomer().getId());
         }
 
         return dto;

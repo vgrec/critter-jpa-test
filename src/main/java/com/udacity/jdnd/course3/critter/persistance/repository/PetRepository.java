@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface PetRepository extends JpaRepository<Pet, Long> {
 
-    List<Pet> findPetsByOwnerId(Long ownerId);
+    List<Pet> findPetsByCustomerId(Long customerId);
 
     List<Pet> findPetsByIdIn(List<Long> petIds);
 

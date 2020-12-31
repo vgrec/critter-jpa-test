@@ -22,7 +22,7 @@ public class Schedule {
     private List<Pet> pets;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    private List<Owner> owners;
+    private List<Customer> customers;
 
     @ElementCollection
     @Enumerated(EnumType.STRING)
@@ -68,11 +68,11 @@ public class Schedule {
         return skills;
     }
 
-    public List<Owner> getOwners() {
-        return owners;
+    public List<Customer> getCustomers() {
+        return customers;
     }
 
-    public void setOwners(List<Owner> owners) {
-        this.owners = owners;
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
     }
 }

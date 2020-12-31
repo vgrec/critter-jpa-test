@@ -1,6 +1,6 @@
 package com.udacity.jdnd.course3.critter.service;
 
-import com.udacity.jdnd.course3.critter.persistance.data.Owner;
+import com.udacity.jdnd.course3.critter.persistance.data.Customer;
 import com.udacity.jdnd.course3.critter.persistance.data.Pet;
 import com.udacity.jdnd.course3.critter.persistance.repository.OwnerRepository;
 import com.udacity.jdnd.course3.critter.pet.PetDTO;
@@ -23,9 +23,9 @@ public class OwnerService {
 
 
     public List<PetDTO> getPetsByOwner(long ownerId) throws Throwable {
-        Optional<Owner> optional = ownerRepository.findById(ownerId);
-        Owner owner = optional.orElseThrow((Supplier<Throwable>) () -> new ItemNotFoundException(ownerId));
-        List<Pet> pets = owner.getPets();
+        Optional<Customer> optional = ownerRepository.findById(ownerId);
+        Customer customer = optional.orElseThrow((Supplier<Throwable>) () -> new ItemNotFoundException(ownerId));
+        List<Pet> pets = customer.getPets();
 
         return toPetsDTOList(pets);
     }
@@ -44,12 +44,12 @@ public class OwnerService {
         dto.setId(pet.getId());
         dto.setName(pet.getName());
         dto.setType(pet.getType());
-        dto.setOwnerId(pet.getOwner().getId());
+        dto.setOwnerId(pet.getCustomer().getId());
 
         // TODO: add other fields
 
-        if (pet.getOwner() != null) {
-            dto.setOwnerId(pet.getOwner().getId());
+        if (pet.getCustomer() != null) {
+            dto.setOwnerId(pet.getCustomer().getId());
         }
 
         return dto;

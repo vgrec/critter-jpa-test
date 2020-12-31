@@ -16,7 +16,7 @@ public class Pet {
     private String name;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private Owner owner;
+    private Customer customer;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "pets")
     private List<Schedule> schedules;
@@ -45,12 +45,12 @@ public class Pet {
         this.name = name;
     }
 
-    public Owner getOwner() {
-        return owner;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setOwner(Owner owner) {
-        this.owner = owner;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public List<Schedule> getSchedules() {
