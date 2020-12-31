@@ -4,16 +4,13 @@ import com.udacity.jdnd.course3.critter.persistance.data.Employee;
 import com.udacity.jdnd.course3.critter.persistance.data.Pet;
 import com.udacity.jdnd.course3.critter.persistance.data.Schedule;
 import com.udacity.jdnd.course3.critter.persistance.repository.EmployeeRepository;
-import com.udacity.jdnd.course3.critter.persistance.repository.OwnerRepository;
 import com.udacity.jdnd.course3.critter.persistance.repository.PetRepository;
 import com.udacity.jdnd.course3.critter.persistance.repository.ScheduleRepository;
-import com.udacity.jdnd.course3.critter.schedule.ScheduleDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -28,67 +25,38 @@ public class ScheduleService {
     @Autowired
     private PetRepository petRepository;
 
-    @Autowired
-    private OwnerRepository ownerRepository;
+    public Schedule createSchedule(Schedule schedule, List<Long> employeeIds, List<Long> petIds) {
+        Schedule savedSchedule = scheduleRepository.save(schedule);
 
-    public ScheduleDTO createSchedule(ScheduleDTO scheduleDTO) {
-        Schedule schedule = scheduleRepository.save(toSchedule(scheduleDTO));
+        // get employees by ids
+        List<Employee> employees = employeeRepository.findEmployeesByIdIn(employeeIds);
 
-        // get employees with ids
-        List<Employee> employees = employeeRepository.findEmployeesByIdIn(scheduleDTO.getEmployeeIds());
-
-        // get pets with ids
-        List<Pet> pets = petRepository.findPetsByIdIn(scheduleDTO.getPetIds());
+        // get pets by ids
+        List<Pet> pets = petRepository.findPetsByIdIn(petIds);
 
         // add them to Schedule instance
-        schedule.setEmployees(employees);
-        schedule.setPets(pets);
+        savedSchedule.setEmployees(employees);
+        savedSchedule.setPets(pets);
 
         // update the schedule
-        Schedule updated = scheduleRepository.save(schedule);
-
-        return toScheduleDTO(updated);
+        return scheduleRepository.save(savedSchedule);
     }
 
-    public List<ScheduleDTO> getAllSchedules() {
-        List<Schedule> schedules = scheduleRepository.findAll();
-        return schedules.stream().map(this::toScheduleDTO).collect(Collectors.toList());
+    public List<Schedule> getAllSchedules() {
+        return scheduleRepository.findAll();
     }
 
-    public List<ScheduleDTO> getScheduleForEmployee(long employeeId) {
-        List<Schedule> schedules = scheduleRepository.findScheduleByEmployeesId(employeeId);
-        return schedules.stream().map(this::toScheduleDTO).collect(Collectors.toList());
+    public List<Schedule> getScheduleForEmployee(long employeeId) {
+        return scheduleRepository.findScheduleByEmployeesId(employeeId);
     }
 
-    public List<ScheduleDTO> getScheduleForPet(long petId) {
-        List<Schedule> schedules = scheduleRepository.findScheduleByPetsId(petId);
-        return schedules.stream().map(this::toScheduleDTO).collect(Collectors.toList());
+    public List<Schedule> getScheduleForPet(long petId) {
+        return scheduleRepository.findScheduleByPetsId(petId);
     }
 
-    public List<ScheduleDTO> getScheduleForCustomer(long customerId) {
+    public List<Schedule> getScheduleForCustomer(long customerId) {
         List<Pet> pets = petRepository.findPetsByOwnerId(customerId);
 
-        List<Schedule> schedules = scheduleRepository.findAllByPetsIn(pets);
-        return schedules.stream().map(this::toScheduleDTO).collect(Collectors.toList());
-    }
-
-    private ScheduleDTO toScheduleDTO(Schedule schedule) {
-        ScheduleDTO dto = new ScheduleDTO();
-        dto.setId(schedule.getId());
-        dto.setDate(schedule.getDate());
-        dto.setActivities(schedule.getSkills());
-        dto.setEmployeeIds(schedule.getEmployees().stream().map(Employee::getId).collect(Collectors.toList()));
-        dto.setPetIds(schedule.getPets().stream().map(Pet::getId).collect(Collectors.toList()));
-
-        return dto;
-    }
-
-    private Schedule toSchedule(ScheduleDTO dto) {
-        Schedule schedule = new Schedule();
-        schedule.setId(dto.getId());
-        schedule.setDate(dto.getDate());
-        schedule.setSkills(dto.getActivities());
-
-        return schedule;
+        return scheduleRepository.findAllByPetsIn(pets);
     }
 }
