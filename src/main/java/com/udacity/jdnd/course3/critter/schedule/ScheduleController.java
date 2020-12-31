@@ -34,21 +34,21 @@ public class ScheduleController {
 
     @GetMapping
     public List<ScheduleDTO> getAllSchedules() {
-        return mapper.toListOfScheduleDTOs(scheduleService.getAllSchedules());
+        return mapper.toListOfDTOs(scheduleService.getAllSchedules());
     }
 
     @GetMapping("/pet/{petId}")
     public List<ScheduleDTO> getScheduleForPet(@PathVariable long petId) {
-        return mapper.toListOfScheduleDTOs(scheduleService.getScheduleForPet(petId));
+        return mapper.toListOfDTOs(scheduleService.getScheduleForPet(petId));
     }
 
     @GetMapping("/employee/{employeeId}")
     public List<ScheduleDTO> getScheduleForEmployee(@PathVariable long employeeId) {
-        return mapper.toListOfScheduleDTOs(scheduleService.getScheduleForEmployee(employeeId));
+        return mapper.toListOfDTOs(scheduleService.getScheduleForEmployee(employeeId));
     }
 
     @GetMapping("/customer/{customerId}")
     public List<ScheduleDTO> getScheduleForCustomer(@PathVariable long customerId) {
-        return mapper.toListOfScheduleDTOs(scheduleService.getScheduleForCustomer(customerId));
+        return mapper.toListOfDTOs(scheduleService.getScheduleForCustomer(customerId));
     }
 }

@@ -39,7 +39,8 @@ public class ScheduleMapper implements Mapper<ScheduleDTO, Schedule> {
         return schedule;
     }
 
-    public List<ScheduleDTO> toListOfScheduleDTOs(List<Schedule> schedules) {
+    @Override
+    public List<ScheduleDTO> toListOfDTOs(List<Schedule> schedules) {
         return schedules.stream()
                 .map(this::toDTO)
                 .collect(Collectors.toList());
