@@ -39,6 +39,8 @@ public class CritterController {
 
     @GetMapping("/test")
     public String test() throws Throwable {
+        personService.getEmployee(100);
+
         EmployeeDTO mariana = new EmployeeDTO();
         mariana.setName("Mariana");
         mariana.setDaysAvailable(Sets.newHashSet(DayOfWeek.WEDNESDAY, DayOfWeek.TUESDAY));
