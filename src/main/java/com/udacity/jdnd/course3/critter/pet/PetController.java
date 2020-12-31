@@ -2,7 +2,6 @@ package com.udacity.jdnd.course3.critter.pet;
 
 import com.udacity.jdnd.course3.critter.mappers.PetMapper;
 import com.udacity.jdnd.course3.critter.persistance.data.Pet;
-import com.udacity.jdnd.course3.critter.service.OwnerService;
 import com.udacity.jdnd.course3.critter.service.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,9 +17,6 @@ public class PetController {
 
     @Autowired
     private PetService petService;
-
-    @Autowired
-    private OwnerService ownerService;
 
     @Autowired
     private PetMapper petMapper;

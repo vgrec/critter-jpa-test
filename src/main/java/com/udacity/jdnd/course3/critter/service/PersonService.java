@@ -4,7 +4,7 @@ import com.udacity.jdnd.course3.critter.persistance.data.Customer;
 import com.udacity.jdnd.course3.critter.persistance.data.Employee;
 import com.udacity.jdnd.course3.critter.persistance.data.Pet;
 import com.udacity.jdnd.course3.critter.persistance.repository.EmployeeRepository;
-import com.udacity.jdnd.course3.critter.persistance.repository.OwnerRepository;
+import com.udacity.jdnd.course3.critter.persistance.repository.CustomerRepository;
 import com.udacity.jdnd.course3.critter.persistance.repository.PetRepository;
 import com.udacity.jdnd.course3.critter.user.EmployeeRequestDTO;
 import com.udacity.jdnd.course3.critter.user.EmployeeSkill;
@@ -26,17 +26,17 @@ public class PersonService {
     private EmployeeRepository employeeRepository;
 
     @Autowired
-    private OwnerRepository ownerRepository;
+    private CustomerRepository customerRepository;
 
     @Autowired
     private PetRepository petRepository;
 
     public Customer saveCustomer(Customer customer) {
-        return ownerRepository.save(customer);
+        return customerRepository.save(customer);
     }
 
     public List<Customer> getAllCustomers() {
-        List<Customer> customers = ownerRepository.findAll();
+        List<Customer> customers = customerRepository.findAll();
 
         for (Customer customer : customers) {
             List<Pet> customerPets = petRepository.findPetsByCustomerId(customer.getId());

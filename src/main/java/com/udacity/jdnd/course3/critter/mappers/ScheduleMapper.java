@@ -19,7 +19,7 @@ public class ScheduleMapper implements Mapper<ScheduleDTO, Schedule> {
 
         BeanUtils.copyProperties(schedule, dto);
 
-        // Copy the rest of the properties that don't have a naming match
+        // Copy the rest of the properties that don't have a property match
         dto.setActivities(schedule.getSkills());
         dto.setEmployeeIds(schedule.getEmployees().stream().map(Employee::getId).collect(Collectors.toList()));
         dto.setPetIds(schedule.getPets().stream().map(Pet::getId).collect(Collectors.toList()));
@@ -33,7 +33,7 @@ public class ScheduleMapper implements Mapper<ScheduleDTO, Schedule> {
 
         BeanUtils.copyProperties(dto, schedule);
 
-        // Copy the rest of the properties that don't have a naming match
+        // Copy the rest of the properties that don't have a property match
         schedule.setSkills(dto.getActivities());
 
         return schedule;

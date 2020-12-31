@@ -2,7 +2,7 @@ package com.udacity.jdnd.course3.critter.service;
 
 import com.udacity.jdnd.course3.critter.persistance.data.Customer;
 import com.udacity.jdnd.course3.critter.persistance.data.Pet;
-import com.udacity.jdnd.course3.critter.persistance.repository.OwnerRepository;
+import com.udacity.jdnd.course3.critter.persistance.repository.CustomerRepository;
 import com.udacity.jdnd.course3.critter.persistance.repository.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,11 +19,11 @@ public class PetService {
     private PetRepository petRepository;
 
     @Autowired
-    private OwnerRepository ownerRepository;
+    private CustomerRepository customerRepository;
 
     public Pet savePet(Pet pet, Long ownerId) {
         Pet savedPet = petRepository.save(pet);
-        Optional<Customer> optionalOwner = ownerRepository.findById(ownerId);
+        Optional<Customer> optionalOwner = customerRepository.findById(ownerId);
 
         if (optionalOwner.isPresent()) {
             Customer customer = optionalOwner.get();

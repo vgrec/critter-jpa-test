@@ -3,6 +3,12 @@ package com.udacity.jdnd.course3.critter.mappers;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Interface definition for converting a DTO to an Entity and vice versa.
+ *
+ * @param <DTO>    - the DTO type
+ * @param <Entity> - the Entity type
+ */
 public interface Mapper<DTO, Entity> {
 
     DTO toDTO(Entity entity);
