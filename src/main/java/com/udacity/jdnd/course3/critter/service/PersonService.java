@@ -50,15 +50,6 @@ public class PersonService {
         return employeeRepository.save(employee);
     }
 
-//    private EmployeeDTO toEmployeeDTO(Employee saved) {
-//        EmployeeDTO dto = new EmployeeDTO();
-//        dto.setId(saved.getId());
-//        dto.setName(saved.getName());
-//        dto.setSkills(saved.getSkills());
-//        dto.setDaysAvailable(saved.getDaysAvailable());
-//        return dto;
-//    }
-
     public Employee getEmployee(long employeeId) throws Throwable {
         Optional<Employee> optional = employeeRepository.findById(employeeId);
         return optional.orElseThrow((Supplier<Throwable>) () -> new ItemNotFoundException(employeeId));
@@ -80,57 +71,6 @@ public class PersonService {
         employee.setDaysAvailable(daysAvailable);
         employeeRepository.save(employee);
     }
-
-//    private Employee toEmployee(EmployeeDTO dto) {
-//        Employee employee = new Employee();
-//        employee.setId(dto.getId());
-//        employee.setName(dto.getName());
-//        employee.setSkills(dto.getSkills());
-//        employee.setDaysAvailable(dto.getDaysAvailable());
-//
-//        return employee;
-//
-//    }
-
-//    private Customer toCustomer(CustomerDTO dto) {
-//        Customer customer = new Customer();
-//        customer.setName(dto.getName());
-//        customer.setPhoneNumber(dto.getPhoneNumber());
-//        customer.setNotes(dto.getNotes());
-//        return customer;
-//    }
-//
-//    private CustomerDTO toCustomerDTO(Customer customer) {
-//        CustomerDTO dto = new CustomerDTO();
-//        dto.setId(customer.getId());
-//        dto.setName(customer.getName());
-//        dto.setPhoneNumber(customer.getPhoneNumber());
-//        dto.setNotes(customer.getNotes());
-//
-//        if (customer.getPets() != null) {
-//            List<PetDTO> ownerPets = new ArrayList<>();
-//            for (Pet pet : customer.getPets()) {
-//                ownerPets.add(toPetDTO(pet));
-//            }
-//            List<Long> petIds = ownerPets.stream().map(PetDTO::getId).collect(Collectors.toList());
-//            dto.setPetIds(petIds);
-//        }
-//
-//        return dto;
-//    }
-
-//    private PetDTO toPetDTO(Pet pet) {
-//        PetDTO dto = new PetDTO();
-//        dto.setId(pet.getId());
-//        dto.setName(pet.getName());
-//        dto.setType(pet.getType());
-//
-//        if (pet.getCustomer() != null) {
-//            dto.setOwnerId(pet.getCustomer().getId());
-//        }
-//
-//        return dto;
-//    }
 
     public List<Employee> findEmployeesForService(EmployeeRequestDTO employeeRequestDTO) {
         Set<EmployeeSkill> skills = employeeRequestDTO.getSkills();
