@@ -66,7 +66,9 @@ public class ScheduleService {
     }
 
     public List<ScheduleDTO> getScheduleForCustomer(long customerId) {
-        List<Schedule> schedules = scheduleRepository.findScheduleByOwnersId(customerId);
+        List<Pet> pets = petRepository.findPetsByOwnerId(customerId);
+
+        List<Schedule> schedules = scheduleRepository.findAllByPetsIn(pets);
         return schedules.stream().map(this::toScheduleDTO).collect(Collectors.toList());
     }
 
