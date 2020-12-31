@@ -72,10 +72,7 @@ public class PersonService {
         employeeRepository.save(employee);
     }
 
-    public List<Employee> findEmployeesForService(EmployeeRequestDTO employeeRequestDTO) {
-        Set<EmployeeSkill> skills = employeeRequestDTO.getSkills();
-        DayOfWeek dayOfWeek = employeeRequestDTO.getDate().getDayOfWeek();
-
+    public List<Employee> findEmployeesForService(Set<EmployeeSkill> skills,  DayOfWeek dayOfWeek) {
         List<Employee> employees = employeeRepository.findEmployeesBySkillsInAndDaysAvailable(skills, dayOfWeek);
 
         List<Employee> resultList = new ArrayList<>();

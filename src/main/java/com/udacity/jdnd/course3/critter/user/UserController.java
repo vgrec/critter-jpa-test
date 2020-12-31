@@ -72,7 +72,10 @@ public class UserController {
 
     @GetMapping("/employee/availability")
     public List<EmployeeDTO> findEmployeesForService(@RequestBody EmployeeRequestDTO employeeRequestDTO) {
-        List<Employee> employees = personService.findEmployeesForService(employeeRequestDTO);
+        List<Employee> employees = personService.findEmployeesForService(
+                employeeRequestDTO.getSkills(),
+                employeeRequestDTO.getDate().getDayOfWeek()
+        );
         return employeeMapper.toListOfDTOs(employees);
     }
 
