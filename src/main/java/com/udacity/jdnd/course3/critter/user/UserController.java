@@ -1,8 +1,10 @@
 package com.udacity.jdnd.course3.critter.user;
 
 import com.udacity.jdnd.course3.critter.mappers.CustomerMapper;
+import com.udacity.jdnd.course3.critter.mappers.EmployeeMapper;
 import com.udacity.jdnd.course3.critter.mappers.PetMapper;
 import com.udacity.jdnd.course3.critter.persistance.data.Customer;
+import com.udacity.jdnd.course3.critter.persistance.data.Employee;
 import com.udacity.jdnd.course3.critter.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +30,9 @@ public class UserController {
     private PetMapper petMapper;
 
     @Autowired
+    private EmployeeMapper employeeMapper;
+
+    @Autowired
     private PersonService personService;
 
     @PostMapping("/customer")
@@ -50,12 +55,14 @@ public class UserController {
 
     @PostMapping("/employee")
     public EmployeeDTO saveEmployee(@RequestBody EmployeeDTO employeeDTO) {
-        return personService.saveEmployee(employeeDTO);
+        Employee employee = employeeMapper.toEntity(employeeDTO);
+        Employee savedEmployee = personService.saveEmployee(employee);
+        return employeeMapper.toDTO(savedEmployee);
     }
 
     @PostMapping("/employee/{employeeId}")
     public EmployeeDTO getEmployee(@PathVariable long employeeId) throws Throwable {
-        return personService.getEmployee(employeeId);
+        return employeeMapper.toDTO(personService.getEmployee(employeeId));
     }
 
     @PutMapping("/employee/{employeeId}")
@@ -65,7 +72,8 @@ public class UserController {
 
     @GetMapping("/employee/availability")
     public List<EmployeeDTO> findEmployeesForService(@RequestBody EmployeeRequestDTO employeeRequestDTO) {
-        return personService.findEmployeesForService(employeeRequestDTO);
+        List<Employee> employees = personService.findEmployeesForService(employeeRequestDTO);
+        return employeeMapper.toListOfDTOs(employees);
     }
 
 }

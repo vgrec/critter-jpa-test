@@ -46,7 +46,6 @@ public class CritterController {
         mariana.setName("Mariana");
         mariana.setDaysAvailable(Sets.newHashSet(DayOfWeek.WEDNESDAY, DayOfWeek.TUESDAY));
         mariana.setSkills(Sets.newHashSet(EmployeeSkill.SHAVING, EmployeeSkill.PETTING));
-        EmployeeDTO saved = personService.saveEmployee(mariana);
 
 
         PetDTO cat = new PetDTO();

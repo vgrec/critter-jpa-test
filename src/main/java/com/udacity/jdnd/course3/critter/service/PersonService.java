@@ -6,7 +6,6 @@ import com.udacity.jdnd.course3.critter.persistance.data.Pet;
 import com.udacity.jdnd.course3.critter.persistance.repository.EmployeeRepository;
 import com.udacity.jdnd.course3.critter.persistance.repository.OwnerRepository;
 import com.udacity.jdnd.course3.critter.persistance.repository.PetRepository;
-import com.udacity.jdnd.course3.critter.user.EmployeeDTO;
 import com.udacity.jdnd.course3.critter.user.EmployeeRequestDTO;
 import com.udacity.jdnd.course3.critter.user.EmployeeSkill;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,24 +46,22 @@ public class PersonService {
         return customers;
     }
 
-    public EmployeeDTO saveEmployee(EmployeeDTO employeeDTO) {
-        Employee saved = employeeRepository.save(toEmployee(employeeDTO));
-        return toEmployeeDTO(saved);
+    public Employee saveEmployee(Employee employee) {
+        return employeeRepository.save(employee);
     }
 
-    private EmployeeDTO toEmployeeDTO(Employee saved) {
-        EmployeeDTO dto = new EmployeeDTO();
-        dto.setId(saved.getId());
-        dto.setName(saved.getName());
-        dto.setSkills(saved.getSkills());
-        dto.setDaysAvailable(saved.getDaysAvailable());
-        return dto;
-    }
+//    private EmployeeDTO toEmployeeDTO(Employee saved) {
+//        EmployeeDTO dto = new EmployeeDTO();
+//        dto.setId(saved.getId());
+//        dto.setName(saved.getName());
+//        dto.setSkills(saved.getSkills());
+//        dto.setDaysAvailable(saved.getDaysAvailable());
+//        return dto;
+//    }
 
-    public EmployeeDTO getEmployee(long employeeId) throws Throwable {
+    public Employee getEmployee(long employeeId) throws Throwable {
         Optional<Employee> optional = employeeRepository.findById(employeeId);
-        Employee employee = optional.orElseThrow((Supplier<Throwable>) () -> new ItemNotFoundException(employeeId));
-        return toEmployeeDTO(employee);
+        return optional.orElseThrow((Supplier<Throwable>) () -> new ItemNotFoundException(employeeId));
     }
 
     public Customer getOwnerByPet(long petId) throws Throwable {
@@ -84,16 +81,16 @@ public class PersonService {
         employeeRepository.save(employee);
     }
 
-    private Employee toEmployee(EmployeeDTO dto) {
-        Employee employee = new Employee();
-        employee.setId(dto.getId());
-        employee.setName(dto.getName());
-        employee.setSkills(dto.getSkills());
-        employee.setDaysAvailable(dto.getDaysAvailable());
-
-        return employee;
-
-    }
+//    private Employee toEmployee(EmployeeDTO dto) {
+//        Employee employee = new Employee();
+//        employee.setId(dto.getId());
+//        employee.setName(dto.getName());
+//        employee.setSkills(dto.getSkills());
+//        employee.setDaysAvailable(dto.getDaysAvailable());
+//
+//        return employee;
+//
+//    }
 
 //    private Customer toCustomer(CustomerDTO dto) {
 //        Customer customer = new Customer();
@@ -135,16 +132,16 @@ public class PersonService {
 //        return dto;
 //    }
 
-    public List<EmployeeDTO> findEmployeesForService(EmployeeRequestDTO employeeRequestDTO) {
+    public List<Employee> findEmployeesForService(EmployeeRequestDTO employeeRequestDTO) {
         Set<EmployeeSkill> skills = employeeRequestDTO.getSkills();
         DayOfWeek dayOfWeek = employeeRequestDTO.getDate().getDayOfWeek();
 
         List<Employee> employees = employeeRepository.findEmployeesBySkillsInAndDaysAvailable(skills, dayOfWeek);
 
-        List<EmployeeDTO> resultList = new ArrayList<>();
+        List<Employee> resultList = new ArrayList<>();
         for (Employee employee : employees) {
             if (employee.getSkills().containsAll(skills)) {
-                resultList.add(toEmployeeDTO(employee));
+                resultList.add(employee);
             }
         }
 
