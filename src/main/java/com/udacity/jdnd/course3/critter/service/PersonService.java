@@ -6,11 +6,10 @@ import com.udacity.jdnd.course3.critter.persistance.data.Pet;
 import com.udacity.jdnd.course3.critter.persistance.repository.EmployeeRepository;
 import com.udacity.jdnd.course3.critter.persistance.repository.OwnerRepository;
 import com.udacity.jdnd.course3.critter.persistance.repository.PetRepository;
-import com.udacity.jdnd.course3.critter.pet.PetDTO;
-import com.udacity.jdnd.course3.critter.user.CustomerDTO;
 import com.udacity.jdnd.course3.critter.user.EmployeeDTO;
 import com.udacity.jdnd.course3.critter.user.EmployeeRequestDTO;
 import com.udacity.jdnd.course3.critter.user.EmployeeSkill;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,39 +19,31 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
 public class PersonService {
+    @Autowired
     private EmployeeRepository employeeRepository;
+
+    @Autowired
     private OwnerRepository ownerRepository;
+
+    @Autowired
     private PetRepository petRepository;
 
-    public PersonService(EmployeeRepository employeeRepository, OwnerRepository ownerRepository, PetRepository petRepository) {
-        this.employeeRepository = employeeRepository;
-        this.ownerRepository = ownerRepository;
-        this.petRepository = petRepository;
+    public Customer saveCustomer(Customer customer) {
+        return ownerRepository.save(customer);
     }
 
-    public CustomerDTO saveCustomer(CustomerDTO customerDTO) {
-        Customer customer = toOwner(customerDTO);
-        Customer saved = ownerRepository.save(customer);
-        return toCustomerDTO(saved);
-    }
+    public List<Customer> getAllCustomers() {
+        List<Customer> customers = ownerRepository.findAll();
 
-    public List<CustomerDTO> getAllCustomers() {
-        List<Customer> owners = ownerRepository.findAll();
-
-        for (Customer customer : owners) {
-            List<Pet> ownersPets = petRepository.findPetsByCustomerId(customer.getId());
-            customer.setPets(ownersPets);
+        for (Customer customer : customers) {
+            List<Pet> customerPets = petRepository.findPetsByCustomerId(customer.getId());
+            customer.setPets(customerPets);
         }
 
-        List<CustomerDTO> customers = new ArrayList<>();
-        for (Customer customer : owners) {
-            customers.add(toCustomerDTO(customer));
-        }
         return customers;
     }
 
@@ -76,14 +67,14 @@ public class PersonService {
         return toEmployeeDTO(employee);
     }
 
-    public CustomerDTO getOwnerByPet(long petId) throws Throwable {
+    public Customer getOwnerByPet(long petId) throws Throwable {
         Optional<Pet> optional = petRepository.findById(petId);
         Pet pet = optional.orElseThrow((Supplier<Throwable>) () -> new ItemNotFoundException(petId));
 
         Customer customer = pet.getCustomer();
         customer.setPets(petRepository.findPetsByCustomerId(customer.getId()));
 
-        return toCustomerDTO(customer);
+        return customer;
     }
 
     public void setAvailability(Set<DayOfWeek> daysAvailable, long employeeId) throws Throwable {
@@ -104,45 +95,45 @@ public class PersonService {
 
     }
 
-    private Customer toOwner(CustomerDTO dto) {
-        Customer customer = new Customer();
-        customer.setName(dto.getName());
-        customer.setPhoneNumber(dto.getPhoneNumber());
-        customer.setNotes(dto.getNotes());
-        return customer;
-    }
+//    private Customer toCustomer(CustomerDTO dto) {
+//        Customer customer = new Customer();
+//        customer.setName(dto.getName());
+//        customer.setPhoneNumber(dto.getPhoneNumber());
+//        customer.setNotes(dto.getNotes());
+//        return customer;
+//    }
+//
+//    private CustomerDTO toCustomerDTO(Customer customer) {
+//        CustomerDTO dto = new CustomerDTO();
+//        dto.setId(customer.getId());
+//        dto.setName(customer.getName());
+//        dto.setPhoneNumber(customer.getPhoneNumber());
+//        dto.setNotes(customer.getNotes());
+//
+//        if (customer.getPets() != null) {
+//            List<PetDTO> ownerPets = new ArrayList<>();
+//            for (Pet pet : customer.getPets()) {
+//                ownerPets.add(toPetDTO(pet));
+//            }
+//            List<Long> petIds = ownerPets.stream().map(PetDTO::getId).collect(Collectors.toList());
+//            dto.setPetIds(petIds);
+//        }
+//
+//        return dto;
+//    }
 
-    private CustomerDTO toCustomerDTO(Customer customer) {
-        CustomerDTO dto = new CustomerDTO();
-        dto.setId(customer.getId());
-        dto.setName(customer.getName());
-        dto.setPhoneNumber(customer.getPhoneNumber());
-        dto.setNotes(customer.getNotes());
-
-        if (customer.getPets() != null) {
-            List<PetDTO> ownerPets = new ArrayList<>();
-            for (Pet pet : customer.getPets()) {
-                ownerPets.add(toPetDTO(pet));
-            }
-            List<Long> petIds = ownerPets.stream().map(PetDTO::getId).collect(Collectors.toList());
-            dto.setPetIds(petIds);
-        }
-
-        return dto;
-    }
-
-    private PetDTO toPetDTO(Pet pet) {
-        PetDTO dto = new PetDTO();
-        dto.setId(pet.getId());
-        dto.setName(pet.getName());
-        dto.setType(pet.getType());
-
-        if (pet.getCustomer() != null) {
-            dto.setOwnerId(pet.getCustomer().getId());
-        }
-
-        return dto;
-    }
+//    private PetDTO toPetDTO(Pet pet) {
+//        PetDTO dto = new PetDTO();
+//        dto.setId(pet.getId());
+//        dto.setName(pet.getName());
+//        dto.setType(pet.getType());
+//
+//        if (pet.getCustomer() != null) {
+//            dto.setOwnerId(pet.getCustomer().getId());
+//        }
+//
+//        return dto;
+//    }
 
     public List<EmployeeDTO> findEmployeesForService(EmployeeRequestDTO employeeRequestDTO) {
         Set<EmployeeSkill> skills = employeeRequestDTO.getSkills();
