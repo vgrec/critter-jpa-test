@@ -4,12 +4,10 @@ import com.udacity.jdnd.course3.critter.persistance.data.Customer;
 import com.udacity.jdnd.course3.critter.persistance.data.Pet;
 import com.udacity.jdnd.course3.critter.persistance.repository.OwnerRepository;
 import com.udacity.jdnd.course3.critter.persistance.repository.PetRepository;
-import com.udacity.jdnd.course3.critter.pet.PetDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
@@ -23,56 +21,25 @@ public class PetService {
     @Autowired
     private OwnerRepository ownerRepository;
 
-    public PetDTO savePet(PetDTO petDTO) {
-        Pet savedPet = petRepository.save(toPet(petDTO));
-        Optional<Customer> optionalOwner = ownerRepository.findById(petDTO.getOwnerId());
+    public Pet savePet(Pet pet, Long ownerId) {
+        Pet savedPet = petRepository.save(pet);
+        Optional<Customer> optionalOwner = ownerRepository.findById(ownerId);
+
         if (optionalOwner.isPresent()) {
             Customer customer = optionalOwner.get();
             savedPet.setCustomer(customer);
-            return toPetDTO(petRepository.save(savedPet));
+            return petRepository.save(savedPet);
         } else {
-            return toPetDTO(savedPet);
+            return savedPet;
         }
     }
 
-    public PetDTO getPet(long petId) throws Throwable {
+    public Pet getPet(long petId) throws Throwable {
         Optional<Pet> optional = petRepository.findById(petId);
-        Pet pet = optional.orElseThrow((Supplier<Throwable>) () -> new ItemNotFoundException(petId));
-        return toPetDTO(pet);
+        return optional.orElseThrow((Supplier<Throwable>) () -> new ItemNotFoundException(petId));
     }
 
-    private Pet toPet(PetDTO dto) {
-        Pet pet = new Pet();
-        pet.setType(dto.getType());
-        pet.setName(dto.getName());
-
-        return pet;
-    }
-
-    private PetDTO toPetDTO(Pet pet) {
-        PetDTO dto = new PetDTO();
-        dto.setId(pet.getId());
-        dto.setName(pet.getName());
-        dto.setType(pet.getType());
-
-        if (pet.getCustomer() != null) {
-            dto.setOwnerId(pet.getCustomer().getId());
-        }
-
-        return dto;
-    }
-
-    public List<PetDTO> getPetsByOwner(long ownerId) {
-        List<Pet> pets = petRepository.findPetsByCustomerId(ownerId);
-        return toPetsDTOList(pets);
-    }
-
-    private List<PetDTO> toPetsDTOList(List<Pet> pets) {
-        List<PetDTO> dtos = new ArrayList<>();
-        for (Pet pet : pets) {
-            dtos.add(toPetDTO(pet));
-        }
-
-        return dtos;
+    public List<Pet> getPetsByOwner(long ownerId) {
+        return petRepository.findPetsByCustomerId(ownerId);
     }
 }
